@@ -1,0 +1,15 @@
+# kubectl apply -f service.yaml
+# kubectl create namespace default-calvin
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: simple-laravel
+  namespace: default-calvin
+spec:
+  template:
+    spec:
+      containers:
+        - image: calvinlam/simple-laravel
+          env:
+            - name: TARGET
+              value: "PHP Sample v1"
